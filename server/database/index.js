@@ -10,5 +10,5 @@ const gameSchema = new mongoose.Schema({
   videos: [{ name: String, url: String }],
 });
 
-// eslint-disable-next-line no-unused-vars
+
 const Game = mongoose.model('Game', gameSchema);
