@@ -1,5 +1,4 @@
 const express = require('express');
-// eslint-disable-next-line no-unused-vars
 const db = require('./database/index.js');
 
 const app = express();
@@ -12,6 +11,5 @@ app.get('/', (req, res) => {
 });
 
 app.listen(PORT, () => {
-  // eslint-disable-next-line no-console
   console.log(`Now listening on port: ${PORT}`);
 });
