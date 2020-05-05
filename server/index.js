@@ -15,7 +15,7 @@ app.get('/api/game/:id', (req, res) => {
       res.sendStatus(500);
       res.end();
     } else {
-      res.send(result).json();
+      res.send(result);
       res.end();
     }
   });
@@ -24,3 +24,5 @@ app.get('/api/game/:id', (req, res) => {
 app.listen(PORT, () => {
   console.log(`Now listening on port: ${PORT}`);
 });
+
+module.exports = app;
