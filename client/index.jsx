@@ -11,11 +11,30 @@ class GameDetails extends React.Component {
     };
   }
 
+  componentDidMount() {
+    this.getImages();
+  }
+
+  getImages() {
+    const url = window.location.href;
+    const id = url.slice(-1);
+    $.ajax({
+      type: 'GET',
+      url: `/api/game/${id}`,
+      success: (data) => {
+        this.setState({ images: data[0].images });
+      },
+      error: () => {
+        console.log('GET ERROR!');
+      },
+    });
+  }
 
   render() {
     return (
       <div>
         <h1>Game Details</h1>
+        {this.state.images}
       </div>
     );
   }
