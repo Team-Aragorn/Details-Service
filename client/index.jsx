@@ -1,6 +1,9 @@
+/* eslint-disable import/extensions */
+/* eslint-disable react/destructuring-assignment */
 import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
+import PhotoCarousel from './components/PhotoCarousel.jsx';
 
 
 class GameDetails extends React.Component {
@@ -34,7 +37,7 @@ class GameDetails extends React.Component {
     return (
       <div>
         <h1>Game Details</h1>
-        {this.state.images}
+        <PhotoCarousel photos={this.state.images} />
       </div>
     );
   }
