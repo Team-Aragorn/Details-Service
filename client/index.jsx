@@ -35,10 +35,7 @@ class GameDetails extends React.Component {
 
   render() {
     return (
-      <div>
-        <h1>Game Details</h1>
-        <PhotoCarousel photos={this.state.images} />
-      </div>
+      <PhotoCarousel photos={this.state.images} />
     );
   }
 }
