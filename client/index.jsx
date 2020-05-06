@@ -3,7 +3,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
-import PhotoCarousel from './components/PhotoCarousel.jsx';
+import PhotoCarousel from './components/photoCarousel.jsx';
 
 
 class GameDetails extends React.Component {

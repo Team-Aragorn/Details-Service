@@ -1,7 +1,8 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable import/extensions */
 /* eslint-disable react/no-array-index-key */
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import Photo from './Photo.jsx';
 
 const PhotoCarousel = ({ photos }) => (
@@ -10,8 +11,8 @@ const PhotoCarousel = ({ photos }) => (
   </div>
 );
 
-PhotoCarousel.propTypes = {
-  photos: PropTypes.arrayOf.isRequired,
-};
+// PhotoCarousel.propTypes = {
+//   photos: PropTypes.shape.isRequired,
+// };
 
 export default PhotoCarousel;
