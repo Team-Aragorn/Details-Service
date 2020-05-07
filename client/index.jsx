@@ -1,5 +1,5 @@
 /* eslint-disable import/extensions */
-/* eslint-disable react/destructuring-assignment */
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
@@ -34,8 +34,9 @@ class GameDetails extends React.Component {
   }
 
   render() {
+    const photos = this.state;
     return (
-      <PhotoCarousel photos={this.state.images} />
+      <PhotoCarousel photos={photos.images} />
     );
   }
 }
