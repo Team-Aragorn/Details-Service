@@ -9,7 +9,10 @@ app.use(express.static('public'));
 app.use(express.json());
 
 app.get('/api/game/:id', (req, res) => {
-  const id = Number(path.basename(req.url));
+  let id = Number(path.basename(req.url));
+  if (id < 0 || id > 99) {
+    id = 1;
+  }
   db.getGame(id, (err, result) => {
     if (err) {
       res.sendStatus(500);
