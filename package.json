@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack --config webpack.config.js",
-    "start": "nodemon server/index.js",
+    "start": "nodemon server/index.js --ignore 'client/' --ignore 'public/'",
     "react-dev": "webpack -d --watch",
     "test": "jest --detectOpenHandles",
     "test:watch": "jest --watch"
@@ -29,9 +29,11 @@
     "jquery": "^3.5.1",
     "mongoose": "^5.9.10",
     "path": "^0.12.7",
+    "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-is": "^16.13.1",
+    "sass": "^1.26.5",
     "styled-components": "^5.1.0",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.11"
