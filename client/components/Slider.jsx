@@ -38,6 +38,7 @@ const Slider = ({ photos }) => {
 const SliderCSS = styled.div`
   position: relative;
   width: 80vw;
+  max-width: 1100px;
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -49,8 +50,10 @@ const LeftButton = styled.button`
   position: absolute;
   left: 0;
   height: 50px;
-  width: 50px;
-  align-items: center;
+  width: 35px;
+  background: url(left-arrow.png);
+  outline: none;
+  border: none;
 `;
 
 const RightButton = styled.button`
@@ -58,7 +61,10 @@ const RightButton = styled.button`
   position: absolute;
   right: 0;
   height: 50px;
-  width: 50px;
+  width: 35px;
+  background: url(right-arrow.png);
+  outline: none;
+  border: none;
 `;
 
 Slider.propTypes = {
