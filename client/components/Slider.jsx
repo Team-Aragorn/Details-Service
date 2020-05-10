@@ -29,6 +29,8 @@ const Slider = ({ photos }) => {
           photos.map((photo) => <Slide photo={photo} key={photo} />)
         }
       </SliderContent>
+      <LeftButton />
+      <RightButton />
     </SliderCSS>
   );
 };
@@ -42,6 +44,22 @@ const SliderCSS = styled.div`
   border: 5px solid blue;
 `;
 
+const LeftButton = styled.button`
+  display: flex;
+  position: absolute;
+  left: 0;
+  height: 50px;
+  width: 50px;
+  align-items: center;
+`;
+
+const RightButton = styled.button`
+  display: flex;
+  position: absolute;
+  right: 0;
+  height: 50px;
+  width: 50px;
+`;
 
 Slider.propTypes = {
   photos: PropTypes.arrayOf(PropTypes.string).isRequired,
