@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 import SliderContent from './SliderContent.jsx';
+import Slide from './Slide.jsx';
 
 
 const Slider = ({ photos }) => {
@@ -24,7 +25,9 @@ const Slider = ({ photos }) => {
         transition={transition}
         width={getWidth() * photos.length}
       >
-        {}
+        {
+          photos.map((photo) => <Slide photo={photo} key={photo} />)
+        }
       </SliderContent>
     </SliderCSS>
   );
