@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unused-state */
 /* eslint-disable no-unused-vars */
 /* eslint-disable import/extensions */
 
@@ -7,6 +8,7 @@ import axios from 'axios';
 
 import PhotoCarousel from './components/photoCarousel.jsx';
 import Slider from './components/Slider.jsx';
+import Details from './components/Details.jsx';
 
 
 class GameDetails extends React.Component {
@@ -14,6 +16,7 @@ class GameDetails extends React.Component {
     super(props);
     this.state = {
       images: [],
+      details: '',
     };
   }
 
@@ -23,20 +26,29 @@ class GameDetails extends React.Component {
     axios.get(`/api/game/${id}`)
       .then((res) => {
         const { images } = res.data[0];
-        this.updateImages(images);
+        const dummyDetails = res.data[0].details;
+        this.updateState(images, dummyDetails);
       });
   }
 
-  updateImages(data) {
+  updateState(images, dummyDetails) {
     this.setState({
-      images: data,
+      images,
+      details: dummyDetails,
     });
   }
 
   render() {
-    const photos = this.state;
+    const data = this.state;
     return (
-      <Slider photos={photos.images} />
+      <div>
+        <div className="details">
+          <Details details={data.details} />
+        </div>
+        <div className="slider">
+          <Slider photos={data.images} />
+        </div>
+      </div>
     );
   }
 }
