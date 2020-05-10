@@ -23,10 +23,8 @@ const save = (game) => {
     // videos: [{ id: game.videos.id, url: game.videos.url }],
   });
 
-  newGame.save((err) => {
-    if (err) {
-      return console.log(err);
-    }
+  return newGame.save().then(() => {
+    console.log('Game saved');
   });
 };
 
