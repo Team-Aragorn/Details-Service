@@ -6,6 +6,7 @@ import ReactDOM from 'react-dom';
 import axios from 'axios';
 
 import PhotoCarousel from './components/photoCarousel.jsx';
+import Slider from './components/Slider.jsx';
 
 
 class GameDetails extends React.Component {
@@ -35,7 +36,7 @@ class GameDetails extends React.Component {
   render() {
     const photos = this.state;
     return (
-      <PhotoCarousel photos={photos.images} />
+      <Slider photos={photos.images} />
     );
   }
 }
