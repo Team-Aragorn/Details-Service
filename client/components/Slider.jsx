@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 /* eslint-disable no-unused-vars */
 /* eslint-disable import/extensions */
 import React, { useState } from 'react';
@@ -9,14 +10,47 @@ import Slide from './Slide.jsx';
 
 
 const Slider = ({ photos }) => {
-  const getWidth = () => window.innerWidth;
+  const getWidth = () => (window.innerWidth * 0.8);
 
   const [state, setState] = useState({
+    activeSlide: 0,
     translate: 0,
     transition: 0.5,
   });
 
-  const { translate, transition } = state;
+  const { translate, transition, activeSlide } = state;
+
+  const nextSlide = () => {
+    if (activeSlide === photos.length - 1) {
+      return setState({
+        ...state,
+        translate: 0,
+        activeSlide: 0,
+      });
+    }
+
+    setState({
+      ...state,
+      activeSlide: activeSlide + 1,
+      translate: (activeSlide + 1) * getWidth(),
+    });
+  };
+
+  const prevSlide = () => {
+    if (activeSlide === 0) {
+      return setState({
+        ...state,
+        translate: (photos.length - 1) * getWidth(),
+        activeSlide: photos.length - 1,
+      });
+    }
+
+    setState({
+      ...state,
+      activeSlide: activeSlide - 1,
+      translate: (activeSlide - 1) * getWidth(),
+    });
+  };
 
   return (
     <SliderCSS>
@@ -29,8 +63,8 @@ const Slider = ({ photos }) => {
           photos.map((photo) => <Slide photo={photo} key={photo} />)
         }
       </SliderContent>
-      <LeftButton />
-      <RightButton />
+      <LeftButton onClick={prevSlide} />
+      <RightButton onClick={nextSlide} />
     </SliderCSS>
   );
 };
@@ -42,7 +76,7 @@ const SliderCSS = styled.div`
   margin: 0 auto;
   display: flex;
   align-items: center;
-  border: 5px solid blue;
+  overflow: hidden;
 `;
 
 const LeftButton = styled.button`
@@ -52,6 +86,7 @@ const LeftButton = styled.button`
   height: 50px;
   width: 35px;
   background: url(left-arrow.png);
+  cursor: pointer;
   outline: none;
   border: none;
 `;
@@ -63,6 +98,7 @@ const RightButton = styled.button`
   height: 50px;
   width: 35px;
   background: url(right-arrow.png);
+  cursor: pointer;
   outline: none;
   border: none;
 `;
