@@ -4,12 +4,28 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
+import SliderContent from './SliderContent.jsx';
+
 
 const Slider = ({ photos }) => {
+  const getWidth = () => window.innerWidth;
+
+  const [state, setState] = useState({
+    translate: 0,
+    transition: 0.5,
+  });
+
+  const { translate, transition } = state;
 
   return (
     <SliderCSS>
-      {}
+      <SliderContent
+        translate={translate}
+        transition={transition}
+        width={getWidth() * photos.length}
+      >
+        {}
+      </SliderContent>
     </SliderCSS>
   );
 };
