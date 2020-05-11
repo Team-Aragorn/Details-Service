@@ -9,9 +9,14 @@ import SliderContent from './SliderContent.jsx';
 import Slide from './Slide.jsx';
 
 
-const Slider = ({ photos }) => {
-  const getWidth = () => (window.innerWidth * 0.8);
+const getWidth = () => {
+  if (window.innerWidth > 1375) {
+    return 1100;
+  }
+  return (window.innerWidth * 0.8);
+};
 
+const Slider = ({ photos }) => {
   const [state, setState] = useState({
     activeSlide: 0,
     translate: 0,
@@ -54,6 +59,10 @@ const Slider = ({ photos }) => {
 
   return (
     <SliderCSS>
+      <Tabs>
+        <button type="button">VIDEOS</button>
+        <button type="button">SCREENSHOTS</button>
+      </Tabs>
       <SliderContent
         translate={translate}
         transition={transition}
@@ -74,34 +83,57 @@ const SliderCSS = styled.div`
   width: 80vw;
   max-width: 1100px;
   margin: 0 auto;
+  padding-top: 45px;
+  padding-bottom: 20px;
   display: flex;
   align-items: center;
   overflow: hidden;
 `;
 
-const LeftButton = styled.button`
+const buttonStyles = `
   display: flex;
   position: absolute;
-  left: 0;
   height: 50px;
   width: 35px;
-  background: url(left-arrow.png);
   cursor: pointer;
   outline: none;
   border: none;
 `;
 
-const RightButton = styled.button`
-  display: flex;
-  position: absolute;
-  right: 0;
-  height: 50px;
-  width: 35px;
-  background: url(right-arrow.png);
-  cursor: pointer;
-  outline: none;
-  border: none;
+const LeftButton = styled.button`
+  ${buttonStyles}
+  left: 0;
+  background: url(left-arrow.png);
 `;
+
+const RightButton = styled.button`
+  ${buttonStyles}
+  right: 0;
+  background: url(right-arrow.png);
+`;
+
+const Tabs = styled.div`
+  top: 0;
+  position: absolute;
+  margin: 0 auto;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  button{
+    width: 190px;
+    height: 45px;
+    background-color: #fff;
+    border: 1px solid #d9d9d9;
+    font-weight: 700;
+    outline: none;
+    letter-spacing: .5px;
+    cursor: pointer;
+  }
+  button:hover{
+    background-color: #d9d9d9;
+  }
+`;
+
 
 Slider.propTypes = {
   photos: PropTypes.arrayOf(PropTypes.string).isRequired,

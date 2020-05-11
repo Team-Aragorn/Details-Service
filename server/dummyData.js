@@ -1,36 +1,36 @@
 const faker = require('faker');
+const db = require('./database/index.js');
 
-const data = [];
+db.deleteAll();
 
 let imageCounter = 1;
 
 const getRandomImages = () => {
   const results = [];
-  const max = Math.floor(Math.random() * 8) + 3;
-  for (let j = 1; j <= max; j += 1) {
-    const picUrl = `https://aragorn-images.s3-us-west-2.amazonaws.com/${imageCounter}.jpg`;
+  const limit = faker.random.number({ min: 4, max: 7 });
+
+  for (let j = 0; j < limit; j += 1) {
+    const imgURL = `https://aragorn-images.s3-us-west-2.amazonaws.com/${imageCounter}.jpg`;
+    results.push(imgURL);
     imageCounter += 1;
     if (imageCounter > 30) {
       imageCounter = 1;
     }
-    results.push(picUrl);
   }
   return results;
 };
 
-const fillData = () => {
+const seed = () => {
   for (let i = 1; i <= 100; i += 1) {
-    const obj = {
+    const newGame = new db.Game({
       id: i,
       name: faker.commerce.productName(),
-      details: faker.lorem.paragraphs(5),
+      details: faker.lorem.paragraphs(3),
       images: getRandomImages(),
-    };
-    data.push(obj);
+    });
+    db.save(newGame);
   }
+  console.log('DONE SEEDING!');
 };
 
-fillData();
-
-
-module.exports = data;
+seed();

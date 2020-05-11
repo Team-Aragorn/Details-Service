@@ -15,16 +15,11 @@ const gameSchema = new mongoose.Schema({
 const Game = mongoose.model('Game', gameSchema);
 
 const save = (game) => {
-  const newGame = new Game({
-    id: game.id,
-    name: game.name,
-    details: game.details,
-    images: game.images,
-    // videos: [{ id: game.videos.id, url: game.videos.url }],
-  });
-
-  return newGame.save().then(() => {
-    console.log('Game saved');
+  game.save((err, result) => {
+    if (err) {
+      return (err, null);
+    }
+    return (null, result);
   });
 };
 
@@ -46,6 +41,7 @@ const deleteAll = () => {
 };
 
 module.exports = {
+  Game,
   save,
   getGame,
   deleteAll,
