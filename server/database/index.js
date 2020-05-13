@@ -32,13 +32,15 @@ const getGame = (id, cb) => {
   });
 };
 
-const deleteAll = () => {
+const deleteAll = () => new Promise((resolve, reject) => {
   Game.deleteMany({}, (err) => {
     if (err) {
-      console.log(err);
+      reject(err);
+      return;
     }
+    resolve();
   });
-};
+});
 
 module.exports = {
   Game,

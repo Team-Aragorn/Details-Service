@@ -20,13 +20,15 @@ class GameDetails extends React.Component {
     this.state = {
       images: [],
       details: '',
+      index: 0,
     };
   }
 
   componentDidMount() {
-    const url = window.location.href;
-    const id = url.slice(url.indexOf('=') + 1);
-    axios.get(`/api/game/${id}`)
+    // const url = window.location.href;
+    // const id = url.slice(url.indexOf('=') + 1);
+    const gameId = window.location.pathname.match(/\/games\/(\d+)\//);
+    axios.get(`/api/games/${gameId[1]}`)
       .then((res) => {
         const { images } = res.data[0];
         const dummyDetails = res.data[0].details;
@@ -41,8 +43,10 @@ class GameDetails extends React.Component {
     });
   }
 
+
   render() {
     const data = this.state;
+    const { index } = this.state;
     return (
       <Wrapper>
         <Details details={data.details} />
@@ -55,7 +59,7 @@ class GameDetails extends React.Component {
 
 const Wrapper = styled.div`
   margin: 0 auto;
-  width: 80%;
+  width: 80vw;
   max-width: 1100px;
   -webkit-font-smoothing: antialiased;
 `;

@@ -1,19 +1,21 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable import/extensions */
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+
+import ImageBarEntry from './ImageBarEntry.jsx';
+
 
 const ImageBar = ({ photos }) => (
   <ImageBarWrapper>
     <Inner>
       {
-        photos.map((photo) => (
-          <img
-            src={photo}
+        photos.map((photo, key) => (
+          <ImageBarEntry
+            photo={photo}
             alt=""
-            style={{
-              width: '110px',
-              height: '60px',
-            }}
+            number={key}
           />
         ))
       }
@@ -23,16 +25,16 @@ const ImageBar = ({ photos }) => (
 
 const ImageBarWrapper = styled.div`
   width: 100%;
+  height: 70px;
   max-width: 910px;
   display: flex;
   flex-direction: row;
+  justify-content: flex-start;
+  grid-area: ImageBar;
   margin: 0 auto;
   padding-bottom: 40px;
-  img{
-    width: 110px;
-    height: 60px;
-    padding: 0 10px;
-  }
+  align-items: flex-start;
+  overflow: hidden
 `;
 
 const Inner = styled.div`

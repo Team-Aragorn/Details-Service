@@ -43,7 +43,7 @@ npm install
 ```sh
 npm run seed
 ```
-When you see 'DONE SEEDING!' Press CTRL-C
+When you see 'DONE SEEDING' Press CTRL-C
 
 ### Starting the App
 Open two terminal windows and run the following:

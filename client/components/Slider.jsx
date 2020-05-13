@@ -5,7 +5,6 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-import SliderContent from './SliderContent.jsx';
 import Slide from './Slide.jsx';
 
 
@@ -57,6 +56,9 @@ const Slider = ({ photos }) => {
     });
   };
 
+  // clean function for window resizing and binding the event
+
+
   return (
     <SliderCSS>
       <Tabs>
@@ -88,6 +90,13 @@ const SliderCSS = styled.div`
   display: flex;
   align-items: center;
   overflow: hidden;
+`;
+
+const SliderContent = styled.div`
+  transform: translateX(-${(props) => props.translate}px);
+  transition: transform ease-out ${(props) => props.transition}s;
+  width: ${(props) => props.width}px;
+  display: flex;
 `;
 
 const buttonStyles = `
