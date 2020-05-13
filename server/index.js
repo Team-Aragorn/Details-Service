@@ -1,16 +1,20 @@
 const express = require('express');
 const path = require('path');
+const bodyParser = require('body-parser');
 const db = require('./database/index.js');
 
 const app = express();
 const PORT = 3004;
 
-app.use(express.static('public'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use('/games/:id', express.static('public'));
 app.use(express.json());
 
-app.get('/api/game/:id', (req, res) => {
+app.get('/api/games/:id', (req, res) => {
   let id = Number(path.basename(req.url));
-  if (id < 0 || id > 99) {
+  if (id < 0 || id > 100) {
     id = 1;
   }
   db.getGame(id, (err, result) => {
