@@ -112,13 +112,13 @@ const buttonStyles = `
 const LeftButton = styled.button`
   ${buttonStyles}
   left: 0;
-  background: url(left-arrow.png);
+  background: url('https://aragorn-images.s3-us-west-2.amazonaws.com/left-arrow.png');
 `;
 
 const RightButton = styled.button`
   ${buttonStyles}
   right: 0;
-  background: url(right-arrow.png);
+  background: url('https://aragorn-images.s3-us-west-2.amazonaws.com/right-arrow.png');
 `;
 
 const Tabs = styled.div`
