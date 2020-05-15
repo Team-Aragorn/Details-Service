@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --config webpack.config.js",
+    "build": "webpack",
     "seed": "node server/seed.js",
     "start": "nodemon server/index.js --ignore 'client/' --ignore 'public/'",
     "react-dev": "webpack -d --watch",
