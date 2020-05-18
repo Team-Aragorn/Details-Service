@@ -17,6 +17,15 @@ class Details extends React.Component {
     const { details } = this.props;
 
 
+    let btnImage;
+
+    if (hidden) {
+      btnImage = <img src="more-details.svg" alt="" style={{ width: '90px', height: '33px' }} />;
+    } else {
+      btnImage = <img src="less-details.svg" alt="" style={{ width: '90px', height: '33px' }} />;
+    }
+
+
     return (
       <DetailsWrapper>
         <h1>
@@ -49,7 +58,7 @@ class Details extends React.Component {
           </>
         )}
         <button type="button" onClick={() => this.setState({ hidden: !hidden })}>
-          More / Less Details
+          {btnImage}
         </button>
       </DetailsWrapper>
     );
@@ -74,10 +83,15 @@ const DetailsWrapper = styled.div`
     font-size: 2.25rem;
     font-weight: 900!important;
     line-height: 1.2;
+    margin-top: 0;
   }
   button {
     display: flex;
     margin: 0 auto;
+    outline: none;
+    padding: 0;
+    border: none;
+    cursor: pointer;
   }
 `;
 

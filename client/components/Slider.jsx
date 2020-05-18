@@ -56,8 +56,6 @@ const Slider = ({ photos }) => {
     });
   };
 
-  // clean function for window resizing and binding the event
-
 
   return (
     <SliderCSS>
