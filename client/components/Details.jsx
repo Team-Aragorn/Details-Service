@@ -20,9 +20,9 @@ class Details extends React.Component {
     let btnImage;
 
     if (hidden) {
-      btnImage = <img src="more-details.svg" alt="" style={{ width: '90px', height: '33px' }} />;
+      btnImage = <img src="https://aragorn-images.s3-us-west-2.amazonaws.com/more-details.svg" alt="" style={{ width: '90px', height: '33px' }} />;
     } else {
-      btnImage = <img src="less-details.svg" alt="" style={{ width: '90px', height: '33px' }} />;
+      btnImage = <img src="https://aragorn-images.s3-us-west-2.amazonaws.com/less-details.svg" alt="" style={{ width: '90px', height: '33px' }} />;
     }
 
 
