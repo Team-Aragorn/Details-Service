@@ -14,6 +14,22 @@ const gameSchema = new mongoose.Schema({
 
 const Game = mongoose.model('Game', gameSchema);
 
+// const addGame = (data) => {
+//   Game.insertOne({
+//     name: data.name,
+//     details: data.details,
+//     images: data.images
+//   })
+// }
+
+// const updateGame = (data) => {
+//   Game.updateOne({
+//     name: data.name,
+//     details: data.details,
+//     images: data.images
+//   })
+// }
+
 const save = (game) => {
   game.save((err, result) => {
     if (err) {
